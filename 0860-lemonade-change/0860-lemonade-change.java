@@ -17,13 +17,13 @@ class Solution {
             }
             else if(bills[i] == 20){
                 if(tens >=1 && fives >= 1){
-                    twentys++;
+                    //twentys++;
                     tens--;
                     fives--;
                 }
                 else if(fives >= 3){
                     fives -= 3;
-                    twentys++;
+                    //twentys++;
                 }
                 else{
                     return false;
