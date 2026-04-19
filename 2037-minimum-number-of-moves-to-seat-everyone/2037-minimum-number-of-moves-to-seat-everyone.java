@@ -3,19 +3,14 @@ class Solution {
        Arrays.sort(seats);
        Arrays.sort(students);
        int seats_shift = 0;
+       int i = 0;
+       int j = 0;
 
-       for(int i=0; i<students.length; i++){
-        while(students[i] != seats[i]){
-            if(students[i] > seats[i]){
-                students[i]--;
-                seats_shift++;
-            }
-            else if(students[i] < seats[i]){
-                students[i]++;
-                seats_shift++;
-            }
-        }
-       } 
+       while(i < seats.length && j < students.length){
+        seats_shift += Math.abs(seats[i] - students[i]);
+        i++;
+        j++;
+       }
        return seats_shift;
     }
 }
