@@ -19,8 +19,12 @@ class Solution {
 
        if(root1 == null || root2 == null || root1.val != root2.val) return false;
 
-       return helper(root1.left, root2.right) && helper(root1.right, root2.left);
+       boolean temp1 = helper(root1.left, root2.right);
+       boolean temp2 = helper(root1.right, root2.left);
+
+       return temp1 && temp2;
     }
+
     public boolean isSymmetric(TreeNode root) {
        if(root == null) return true;
        TreeNode root1 = root.left;
