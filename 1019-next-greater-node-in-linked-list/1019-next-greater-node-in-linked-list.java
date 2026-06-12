@@ -9,40 +9,26 @@
  * }
  */
 class Solution {
-    public int listlength(ListNode head){
-        if(head == null) return 0;
-        int size = 0;
-        ListNode temp = head;
-        while(temp != null){
-            size++;
-            temp = temp.next;
-        }
-        return size;
-    }
     public int[] nextLargerNodes(ListNode head) {
-        int LLsize = listlength(head);
-        int [] ans = new int[LLsize];
+        List<Integer> values = new ArrayList<>();
 
-        ListNode outer = head;
-        int i=0;
-        while(outer != null){
-            ListNode inner = outer;
-            boolean found = false;
-            while(inner != null){
-                if(outer.val < inner.val){
-                    found = true;
-                    ans[i] = inner.val;
-                    i++;
-                    break;
-                }
-                inner = inner.next;
-            }
-            if(found == false){
-                ans[i] = 0;
-                i++;
-            }
-            outer = outer.next;
+        while (head != null) {
+            values.add(head.val);
+            head = head.next;
         }
+
+        int n = values.size();
+        int[] ans = new int[n];
+
+        Stack<Integer> st = new Stack<>();
+
+        for(int i=0; i < n; i++){
+            while(!st.isEmpty() && values.get(i) > values.get(st.peek())){
+                ans[st.pop()] = values.get(i);
+            }
+            st.push(i);
+        }
+
         return ans;
     }
 }
