@@ -26,11 +26,16 @@ class Solution {
     public ListNode removeNodes(ListNode head) {
         head = ReverseLL(head);
         ListNode curr = head;
-        while(curr != null ){
-            while(curr.next != null && curr.val > curr.next.val){
+        int max = head.val;
+
+        while(curr != null && curr.next != null){
+           if(curr.next.val < max){
                 curr.next = curr.next.next;
-            }
-            curr = curr.next;
+           }
+           else{
+                curr = curr.next;
+                max = curr.val;
+           }
         }
         return ReverseLL(head);
     }
