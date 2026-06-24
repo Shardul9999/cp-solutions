@@ -20,22 +20,18 @@ class Solution {
         q.offer(root);
         while(!q.isEmpty()){
             int size = q.size();
+            long sum = 0;
             List<Integer> num = new ArrayList<>();
             for(int i=0; i<size; i++){
                 TreeNode temp = q.poll();
                 num.add(temp.val);
 
+                sum += temp.val;
+
                 if(temp.left != null) q.offer(temp.left);
                 if(temp.right != null) q.offer(temp.right);
-            }
-            double avg = 0;
-            double sum = 0;
-            for(int a : num){
-                sum += a;
-            }
-            avg = sum / num.size();
-
-            ans.add(avg);
+            }   
+            ans.add((double)sum / size);
         }
 
         return ans;
