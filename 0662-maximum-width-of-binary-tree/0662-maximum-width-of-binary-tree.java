@@ -14,10 +14,10 @@
  * }
  */
 class Pair{
-    int index;
+    long index;
     TreeNode node;
 
-    Pair(int index, TreeNode node){
+    Pair(long index, TreeNode node){
         this.index = index;
         this.node = node;
     }
@@ -30,15 +30,15 @@ class Solution {
         int maxwidth = 0;
 
         while(!q.isEmpty()){
-            int size = q.size();
-            int startidx = q.peekFirst().index;
-            int endidx = q.peekLast().index;
+            long size = q.size();
+            long startidx = q.peekFirst().index;
+            long endidx = q.peekLast().index;
 
-            maxwidth = Math.max(maxwidth, endidx - startidx + 1);
+            maxwidth = Math.max(maxwidth, (int)(endidx - startidx + 1));
             
             for(int i=0; i<size; i++){
                 Pair nodepair = q.pollFirst();
-                int idx = nodepair.index;
+                long idx = nodepair.index;
                 TreeNode node = nodepair.node;
 
                 if(node.left != null){
