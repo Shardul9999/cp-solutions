@@ -14,16 +14,20 @@
  * }
  */
 class Solution {
-    public int helper(TreeNode root){
-        if(root == null) return 0;
-
-        int left = helper(root.left);
-        int right = helper(root.right);
-
-        return 1 + left + right;
-    }
-
     public int countNodes(TreeNode root) {
-        return helper(root);
+        if(root == null) return 0;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        int count = 0;
+        
+        while(!q.isEmpty()){
+            count++;
+            
+            TreeNode temp = q.poll();
+            if(temp.left != null) q.offer(temp.left);
+            if(temp.right != null) q.offer(temp.right);
+        }
+        
+        return count;
     }
 }
