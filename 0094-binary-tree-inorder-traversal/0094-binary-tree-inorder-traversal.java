@@ -14,17 +14,33 @@
  * }
  */
 class Solution {
-    private void Inorder(TreeNode root, List<Integer> lis){
-        if(root == null) return;
-
-        Inorder(root.left, lis);
-        lis.add(root.val);
-        Inorder(root.right, lis);
-    }
-
+   
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> lis = new ArrayList<>();
-        Inorder(root, lis);
+        TreeNode curr = root;
+
+        while(curr != null){
+            if(curr.left == null){
+                lis.add(curr.val);
+                curr = curr.right;
+            }
+            else{
+                TreeNode IP = curr.left;
+                while(IP.right != null && IP.right != curr){
+                    IP = IP.right;
+                }
+
+                if(IP.right == null){
+                    IP.right = curr;
+                    curr = curr.left;
+                }
+                else{
+                    IP.right = null;
+                    lis.add(curr.val);
+                    curr = curr.right;
+                }
+            }
+        }
 
         return lis;
     }
