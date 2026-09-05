@@ -1,6 +1,6 @@
 class Solution {
     public int firstStableIndex(int[] nums, int k) {
-        int n = nums.length;
+         int n = nums.length;
         int [] pre = new int[n];
         int [] suff = new int[n];
 
