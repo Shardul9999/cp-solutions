@@ -20,14 +20,14 @@ class Solution {
             right--;
 
             if(top <= bottom){
-                for (int j = right; j >= left; j--) {
+                for(int j = right; j >= left; j--) {
                     result.add(matrix[bottom][j]);
                 }
                 bottom--;
             }
 
             if(left <= right){ 
-                for (int i = bottom; i >= top; i--) {
+                for(int i = bottom; i >= top; i--) {
                     result.add(matrix[i][left]);
                 }
                 left++;
